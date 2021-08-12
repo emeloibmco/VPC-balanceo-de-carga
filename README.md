@@ -1,7 +1,7 @@
-# VPC Despliegue VSIs Schematics ☁
+# VPC balanceo de carga ☁
 *IBM® Cloud Schematics* 
 
-La presente guía esta enfocada en crear un despliegue de un grupo de servidores virtuales en un ambiente de nube privada virtual (VPC) en una cuenta de IBM Cloud.
+La presente guía esta enfocada en crear un despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso de habilitar el monitoreo de un balanceador de carga
 
 <br />
 
