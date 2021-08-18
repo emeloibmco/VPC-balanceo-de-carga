@@ -1,9 +1,7 @@
 # VPC balanceo de carga ☁
 *IBM® Cloud Schematics* 
 
-La presente guía esta enfocada en crear un despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso de habilitar el monitoreo de un balanceador de carga
-
-<br />
+La presente guía esta enfocada en crear el despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso a realizar para habilitar el monitoreo de un balanceador de carga
 
 ## Índice  📰
 1. [Pre-Requisitos](#Pre-Requisitos-pencil)
@@ -15,13 +13,14 @@ La presente guía esta enfocada en crear un despliegue un ambiente demo de balan
 
 ## Pre Requisitos :pencil:
 * Contar con una cuenta en <a href="https://cloud.ibm.com/"> IBM Cloud</a>.
-* Contar con un grupo de recursos específico para la implementación de los recursos.
+* Contar con un grupo de recursos específico para el despliegue de los recursos
+* Haber creado una llave ssh en VPC dentro de la cuenta de IBM Cloud
 
 
 ## Crear y configurar un espacio de trabajo en IBM Cloud Schematics
 Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de <a href="https://cloud.ibm.com/schematics/workspaces">IBM Cloud Schematics</a> y dar click en ```CREAR ESPACIO DE TRABAJO```, una vez hecho esto aparecera una ventana en la que debera diligenciar la siguiente información.
 
-* ```URL del repositorio de Git```: https://github.com/emeloibmco/VPC-Despliegue-VSIs-Schematics
+* ```URL del repositorio de Git```: https://github.com/emeloibmco/VPC-balanceo-de-carga
 * ```Tocken de acceso```: "(Opcional) Este parametro solo es necesario para trabajar con repositorio privados"
 * ```Version de Terraform```: terraform_v0.14
 
