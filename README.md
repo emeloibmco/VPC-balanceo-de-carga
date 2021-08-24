@@ -1,24 +1,24 @@
 # VPC balanceo de carga ☁
 *IBM® Cloud Schematics* 
 
-La presente guía esta enfocada en crear el despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso a realizar para habilitar el monitoreo de un balanceador de carga
+La presente guía esta enfocada en crear el despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso a realizar para habilitar el monitoreo de un balanceador de carga.
+<br />
 
 ## Índice  📰
 1. [Pre-Requisitos](#Pre-Requisitos-pencil)
-2. [Crear una instancia de servicion de IBM Cloud Monitoring](#Crear_una_instancia_de_servicion_de_IBM_Cloud_Monitoring)
-3. [Crear y configurar un espacio de trabajo en IBM Cloud Schematics](#Crear-y-configurar-un-espacio-de-trabajo-en-IBM-Cloud-Schematics)
-4. [Configurar las variables de personalización de la plantilla de terraform](#Configurar-las-variables-de-personalización-de-la-plantilla-de-terraform)
-5. [Generar y Aplicar el plan de despliegue de los servidores VPC](#Generar-y-apicar-el-plan-de-despliegue-de-los-servidores-VPC)
-6. [Autores](#Autores-black_nib)
+2. [Crear y configurar un espacio de trabajo en IBM Cloud Schematics](#Crear-y-configurar-un-espacio-de-trabajo-en-IBM-Cloud-Schematics)
+3. [Configurar las variables de personalización de la plantilla de terraform](#Configurar-las-variables-de-personalización-de-la-plantilla-de-terraform)
+4. [Generar y aplicar el plan de despliegue de los servidores VPC](#Generar-y-aplicar-el-plan-de-despliegue-de-los-servidores-VPC)
+5. [Acceder al balanceador de carga y realizar solicitud HTTP](#Acceder-al-balanceador-de-carga-y-realizar-solicitud-HTTP)
+6. [Registro y monitoreo de balanceo de carga](#Registro-y-monitoreo-de-balanceo-de-carga)
+7. [Referencias](#Referencias-mag)
+8. [Autores](#Autores-black_nib)
 <br />
 
 ## Pre Requisitos :pencil:
 * Contar con una cuenta en <a href="https://cloud.ibm.com/"> IBM Cloud</a>.
 * Contar con un grupo de recursos específico para el despliegue de los recursos
 * Haber creado una llave ssh en VPC dentro de la cuenta de IBM Cloud
-<br />
-
-## Crear una instancia de servicion de IBM Cloud Monitoring
 <br />
 
 ## Crear y configurar un espacio de trabajo en IBM Cloud Schematics
@@ -43,14 +43,25 @@ Una vez  creado el espacio de trabajo, podra ver el campo VARIABLES que permite 
 * ```resource_group```: Ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
 <br />
 
-## Generar y Aplicar el plan de despliegue de los servidores VPC
+## Generar y aplicar el plan de despliegue de los servidores VPC
 Ya que estan todos los campos de personalización completos, debe ir hasta la parte superior de la ventana donde encontrara dos opciones, Generar plan y Aplicar plan. Para continuar con el despliegue de los recursos debera presionar ```Generar Plan``` y una vez termine de generarse el plan ```Aplicar Plan```.
 
 * ```Generar plan```: Según su configuración, Terraform crea un plan de ejecución y describe las acciones que deben ejecutarse para llegar al estado que se describe en sus archivos de configuración de Terraform. Para determinar las acciones, Schematics analiza los recursos que ya están aprovisionados en su cuenta de IBM Cloud para brindarle una vista previa de si los recursos deben agregarse, modificarse o eliminarse. Puede revisar el plan de ejecución, cambiarlo o simplemente ejecutar el plan
 * ```resource_group```: Cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de Terraform. Para ejecutar las acciones que se especifican en sus archivos de configuración, Schematics utiliza el complemento IBM Cloud Provider para Terraform.
 <br />
 
-# Referencias 📖
+## Acceder al balanceador de carga y realizar solicitud HTTP
+<br />
 
+## Registro y monitoreo de balanceo de carga
+<br />
+
+## Referencias :mag:
+* <a href="https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started">Getting started with Virtual Private Cloud (VPC)</a>.
 * [Acerca de IBM Cloud Schematics](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics).
+<br />
+
+## Autores :black_nib:
+Equipo IBM Cloud Tech Sales Colombia.
+<br />
 
