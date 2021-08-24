@@ -40,6 +40,7 @@ Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguient
 Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo y como opcional puede dar una descripción. Luego, de click en tl botón ```Siguiente/Next```.
 
 Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
+
 <br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/2_CrearWS.gif"></p>
@@ -119,6 +120,6 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
 <br />
 
 ## Autores :black_nib:
-Equipo IBM Cloud Tech Sales Colombia.
+Equipo *IBM Cloud Tech Sales Colombia*.
 <br />
 
