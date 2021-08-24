@@ -64,20 +64,33 @@ Ya que estan todos los campos de personalización completos, debe ir hasta la pa
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/4_GenerarPlan.gif"></p>
 <br />
 
-* ```Aplicar plan```: Cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de Terraform. Para ejecutar las acciones que se especifican en sus archivos de configuración, Schematics utiliza el complemento IBM Cloud Provider para Terraform.
+2. De click en ```Aplicar plan/Apply plan```: cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de *Terraform*. Para ejecutar las acciones que se especifican en sus archivos de configuración, *Schematics* utiliza el complemento *IBM Cloud* Provider para *Terraform*. Espere unos minutos mientras se completa el proceso. 
 <br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_1_AplicarPlan.gif"></p>
 <br />
 
+Al final debe salir como respuesta *Done with the workspace action*, tal y como se muestra en la siguiente imagen.
+<br /> 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_2_AplicarPlan.PNG"></p>
 <br />
 
 ## Acceder al balanceador de carga y realizar solicitud HTTP
+Para acceder al balanceador de carga implementado en el proceso anterior, realice lo siguiente:
+
+1. De click en el ```Menú de navegación/Navigation menu``` ➡ ```Infraestructura VPC/VPC infrastructure```.
+
+2. En la sección de ```Red/Network``` de click en la pestaña ```Balanceadores de carga/Load balancers```.
+
+3. Tenga en cuenta la región en donde desplegó sus recursos y de click sobre el balanceador de carga que utilizará.
+
+4. En la sección de ```IPs``` copie la primera IP que se muestra.
 <br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/6_LoadBalancer.gif"></p>
 <br />
+
+5. Coloque la IP en el navegador. Deberá visualizar como resultado la aplicación que se muestra en la imagen. Para realizar solicitudes de forma automática habilite la opción ```Auto refresh```.
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/7_nginx.gif"></p>
 <br />
