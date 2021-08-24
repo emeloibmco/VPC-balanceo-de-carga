@@ -80,7 +80,7 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 
 1. De click en el ```Menú de navegación/Navigation menu``` ➡ ```Infraestructura VPC/VPC infrastructure```.
 
-2. En la sección de ```Red/Network``` de click en la pestaña ```Balanceadores de carga/Load balancers```.
+2. En la sección de ```Red/Network``` de click en la pestaña ```Equilibradores de carga/Load balancers```.
 
 3. Tenga en cuenta la región en donde desplegó sus recursos y de click sobre el balanceador de carga que utilizará.
 
@@ -91,19 +91,31 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 <br />
 
 5. Coloque la IP en el navegador. Deberá visualizar como resultado la aplicación que se muestra en la imagen. Para realizar solicitudes de forma automática habilite la opción ```Auto refresh```.
+<br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/7_nginx.gif"></p>
 <br />
 
 ## Registro y monitoreo de balanceo de carga
+Para monitorear y registrar de forma gráfica las solicitudes que se hacen al balanceador de carga, realice lo siguiente:
+
+1. Si no tiene agregado un servicio de monitoreo en el balanceador de carga:
+   * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
+   * De click en el botón ```Agregar monitoreo/Add monitoring```. 
+   * En la nueva ventana que aparece para la creación del servicio indique la región donde está trabajando, el plan de precios (puede ser Lite), asigne un nombre exclusivo para el      servicio, seleccione el grupo de recursos, habilite la plataforma de métricas y para finalizar de click en el botón ```Crear/Create```.
+
+2. Si ya tiene agregado el servicio de monitoreo en el balanceador de carga:
+   * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
+   * De click en el botón ```Iniciar supervisión/Launch monitoring```. 
+
+3. Espero mientras carga la ventana de monitoreo. Luego, podrá visualizar las métricas.
 <br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/8_Monitoreo.gif"></p>
 <br />
 
 ## Referencias :mag:
-* <a href="https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started">Getting started with Virtual Private Cloud (VPC)</a>.
-* [Acerca de IBM Cloud Schematics](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics).
+* <a href="https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics">Acerca de IBM Cloud Schematics</a>.
 <br />
 
 ## Autores :black_nib:
