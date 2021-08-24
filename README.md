@@ -26,7 +26,7 @@ Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de
 
 | Variable | Descripción |
 | ------------- | ------------- |
-| URL del repositorio de Gi  | https://github.com/emeloibmco/VPC-Despliegue-VSIs-Schematics |
+| URL del repositorio de Git  | https://github.com/emeloibmco/VPC-Despliegue-VSIs-Schematics |
 | Tocken de acceso  | "(Opcional) Este parametro solo es necesario para trabajar con repositorio privados"  |
 | Version de Terraform | terraform_v0.14 |
 
