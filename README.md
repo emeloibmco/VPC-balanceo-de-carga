@@ -17,43 +17,74 @@ La presente guía esta enfocada en crear el despliegue un ambiente demo de balan
 
 ## Pre Requisitos :pencil:
 * Contar con una cuenta en <a href="https://cloud.ibm.com/"> IBM Cloud</a>.
-* Contar con un grupo de recursos específico para el despliegue de los recursos
-* Haber creado una llave ssh en VPC dentro de la cuenta de IBM Cloud
+* Contar con un grupo de recursos específico para el despliegue de los recursos.
+* Haber creado una clave *SSH* en VPC dentro de la cuenta de IBM Cloud.
 <br />
 
 ## Crear y configurar un espacio de trabajo en IBM Cloud Schematics
-Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de <a href="https://cloud.ibm.com/schematics/workspaces">IBM Cloud Schematics</a> y dar click en ```CREAR ESPACIO DE TRABAJO```, una vez hecho esto aparecera una ventana en la que debera diligenciar la siguiente información.
+Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de <a href="https://cloud.ibm.com/schematics/workspaces">IBM Cloud Schematics</a> y dar click en ```CREAR ESPACIO DE TRABAJO```.
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/1_Acceso.gif"></p>
+<br />
+
+Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguiente información:
 
 | Variable | Descripción |
 | ------------- | ------------- |
 | URL del repositorio de GitHub | https://github.com/emeloibmco/VPC-balanceo-de-carga |
-| Tocken de acceso  | "(Opcional) Este parametro solo es necesario para trabajar con repositorio privados"  |
+| Tocken de acceso  | (Opcional) Este parámetro solo es necesario para trabajar con repositorio privados |
 | Version de Terraform | terraform_v0.14 |
 
-Presione ```SIGUIENTE```  > Agregue un nombre para el espacio de trabajo > Seleccione el grupo de recursos al que tiene acceso > Seleccione una ubicacion para el espacio de trabajo y como opcional puede dar una descripción. 
+Presione ```SIGUIENTE```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicacion para el espacio de trabajo y como opcional puede dar una descripción. 
 
 Una vez completos todos los campos puede presionar la opcion ``` CREAR```.
+<br />
 
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/2_CrearWS.gif"></p>
 <br />
 
 ## Configurar las variables de personalización de la plantilla de terraform
 Una vez  creado el espacio de trabajo, podra ver el campo VARIABLES que permite personalizar el espacio de trabajo allí debe ingresar la siguiente información:
 
-* ```ssh_keyname```: Nombre del ssh key que tendran las instancias de computo en el template
+* ```ssh_keyname```: Nombre del ssh key que tendran las instancias de computo en el template.
 * ```resource_group```: Ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/3_ConfigurarVariables.gif"></p>
 <br />
 
 ## Generar y aplicar el plan de despliegue de los servidores VPC
 Ya que estan todos los campos de personalización completos, debe ir hasta la parte superior de la ventana donde encontrara dos opciones, Generar plan y Aplicar plan. Para continuar con el despliegue de los recursos debera presionar ```Generar Plan``` y una vez termine de generarse el plan ```Aplicar Plan```.
 
-* ```Generar plan```: Según su configuración, Terraform crea un plan de ejecución y describe las acciones que deben ejecutarse para llegar al estado que se describe en sus archivos de configuración de Terraform. Para determinar las acciones, Schematics analiza los recursos que ya están aprovisionados en su cuenta de IBM Cloud para brindarle una vista previa de si los recursos deben agregarse, modificarse o eliminarse. Puede revisar el plan de ejecución, cambiarlo o simplemente ejecutar el plan
-* ```resource_group```: Cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de Terraform. Para ejecutar las acciones que se especifican en sus archivos de configuración, Schematics utiliza el complemento IBM Cloud Provider para Terraform.
+* ```Generar plan```: Según su configuración, Terraform crea un plan de ejecución y describe las acciones que deben ejecutarse para llegar al estado que se describe en sus archivos de configuración de Terraform. Para determinar las acciones, Schematics analiza los recursos que ya están aprovisionados en su cuenta de IBM Cloud para brindarle una vista previa de si los recursos deben agregarse, modificarse o eliminarse. Puede revisar el plan de ejecución, cambiarlo o simplemente ejecutar el plan.
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/4_GenerarPlan.gif"></p>
+<br />
+
+* ```Aplicar plan```: Cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de Terraform. Para ejecutar las acciones que se especifican en sus archivos de configuración, Schematics utiliza el complemento IBM Cloud Provider para Terraform.
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_1_AplicarPlan.gif"></p>
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_2_AplicarPlan.PNG"></p>
 <br />
 
 ## Acceder al balanceador de carga y realizar solicitud HTTP
 <br />
 
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/6_LoadBalancer.gif"></p>
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/7_nginx.gif"></p>
+<br />
+
 ## Registro y monitoreo de balanceo de carga
+<br />
+
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/8_Monitoreo.gif"></p>
 <br />
 
 ## Referencias :mag:
