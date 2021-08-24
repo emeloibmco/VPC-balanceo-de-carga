@@ -33,6 +33,7 @@ Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de
 Presione ```SIGUIENTE```  > Agregue un nombre para el espacio de trabajo > Seleccione el grupo de recursos al que tiene acceso > Seleccione una ubicacion para el espacio de trabajo y como opcional puede dar una descripción. 
 
 Una vez completos todos los campos puede presionar la opcion ``` CREAR```.
+
 <br />
 
 ## Configurar las variables de personalización de la plantilla de terraform
