@@ -30,12 +30,14 @@ Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de
 <br />
 
 Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguiente información:
+<br />
 
 | VARIABLE | DESCRIPCIÓN |
 | ------------- | :---: |
 | URL del repositorio de GitHub | https://github.com/emeloibmco/VPC-balanceo-de-carga |
 | Tocken de acceso  | (Opcional) Este parámetro solo es necesario para trabajar con repositorio privados |
 | Version de Terraform | terraform_v0.14 |
+<br />
 
 Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo y como opcional puede dar una descripción. Luego, de click en tl botón ```Siguiente/Next```.
 
