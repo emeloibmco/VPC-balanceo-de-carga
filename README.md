@@ -124,7 +124,7 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
    * De click en el botón ```Iniciar supervisión/Launch monitoring```. 
    <br />
 
-3. Espero mientras carga la ventana de monitoreo. Luego, podrá visualizar las métricas.
+3. Espere mientras carga la ventana de monitoreo. Luego, podrá visualizar las métricas.
 <br />
 
 <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/8_Monitoreo.gif"></p>
