@@ -5,6 +5,9 @@ La presente guía esta enfocada en crear el despliegue un ambiente demo de balan
 
 <br />
 
+<p align="center"><img width="700" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/DiagramaFinal.PNG"></p>
+<br />
+
 ## Índice  📰
 1. [Pre-Requisitos](#Pre-Requisitos-pencil)
 2. [Crear y configurar un espacio de trabajo en IBM Cloud Schematics](#Crear-y-configurar-un-espacio-de-trabajo-en-IBM-Cloud-Schematics-gear)
