@@ -32,7 +32,7 @@ Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de
 Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguiente información:
 
 | VARIABLE | DESCRIPCIÓN |
-| ------------- | ------------- |
+| ------------- | :---: |
 | URL del repositorio de GitHub | https://github.com/emeloibmco/VPC-balanceo-de-carga |
 | Tocken de acceso  | (Opcional) Este parámetro solo es necesario para trabajar con repositorio privados |
 | Version de Terraform | terraform_v0.14 |
