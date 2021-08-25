@@ -119,6 +119,7 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
 2. Si ya tiene agregado el servicio de monitoreo en el balanceador de carga:
    * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
    * De click en el botón ```Iniciar supervisión/Launch monitoring```. 
+   <br />
 
 3. Espero mientras carga la ventana de monitoreo. Luego, podrá visualizar las métricas.
 <br />
