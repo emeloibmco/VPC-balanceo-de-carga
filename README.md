@@ -136,6 +136,7 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
 
 ## Referencias :mag:
 * <a href="https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics">Acerca de IBM Cloud Schematics</a>.
+* <a href="https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-vs-elb">Load balancers for VPC overview</a>.
 <br />
 
 ## Autores :black_nib:
