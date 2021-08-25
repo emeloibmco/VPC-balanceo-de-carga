@@ -8,7 +8,7 @@ La presente guía esta enfocada en crear el despliegue un ambiente demo de balan
 ## Índice  📰
 1. [Pre-Requisitos](#Pre-Requisitos-pencil)
 2. [Crear y configurar un espacio de trabajo en IBM Cloud Schematics](#Crear-y-configurar-un-espacio-de-trabajo-en-IBM-Cloud-Schematics-gear)
-3. [Configurar las variables de personalización de la plantilla de terraform](#Configurar-las-variables-de-personalización-de-la-plantilla-de-terraformkey-key)
+3. [Configurar las variables de personalización de la plantilla de terraform](#Configurar-las-variables-de-personalización-de-la-plantilla-de-terraform-key)
 4. [Generar y aplicar el plan de despliegue de los servidores VPC](#Generar-y-aplicar-el-plan-de-despliegue-de-los-servidores-VPC-hammer_and_wrench)
 5. [Acceder al balanceador de carga y realizar solicitud HTTP](#Acceder-al-balanceador-de-carga-y-realizar-solicitud-HTTP-computer)
 6. [Registro y monitoreo de balanceo de carga](#Registro-y-monitoreo-de-balanceo-de-carga-chart_with_upwards_trend)
