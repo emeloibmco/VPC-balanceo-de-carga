@@ -104,11 +104,11 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
 
 1. Si no tiene agregado un servicio de monitoreo en el balanceador de carga:
    * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
-   * De click en el botón ```Agregar monitoreo/Add monitoring```. 
+   * De click en el botón ```Agregar monitoreo/Add monitoring``` para agregar un servicio *IBM Cloud Monitoring*. 
    * En la nueva ventana que aparece para la creación del servicio indique la región donde está trabajando, el plan de precios (puede ser Lite), asigne un nombre exclusivo para el      servicio, seleccione el grupo de recursos, habilite la plataforma de métricas y para finalizar de click en el botón ```Crear/Create```.
      <br />
 
-     <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/AddMonitoring.PNG"></p>
+     <p align="center"><img width="500" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/AddMonitoring.PNG"></p>
      <br />
      
      <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/AddMonitoring2.gif"></p>
