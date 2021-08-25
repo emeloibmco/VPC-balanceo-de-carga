@@ -1,7 +1,11 @@
 # VPC balanceo de carga ☁
-*IBM® Cloud Schematics* 
+*IBM Cloud* proporciona dos tipos de equilibradores de carga para VPC: **Application Load Balancer para VPC (ALB)** y **Network Load Balancer para VPC (NLB)**. Estos equilibradores se pueden utilizar para distribuir el tráfico entre varias instancias de servidor dentro de la misma región de su VPC. 
 
-La presente guía esta enfocada en crear el despliegue un ambiente demo de balanceo de carga con el fin de ver el proceso a realizar para habilitar el monitoreo de un balanceador de carga.
+*IBM Cloud* proporciona equilibradores de carga de aplicaciones públicos y privados. Un equilibrador de carga de aplicaciones proporciona equilibrio de carga de capa 7 (aplicación) y capa 4 (transporte) en y da soporte a la descarga de SSL (Secure Sockets Layer). Los paquetes entrantes y salientes fluyen a través del equilibrador de carga.
+
+Por otro lado, un equilibrador de carga de red solo proporciona equilibrio de carga de capa 4 en *IBM Cloud* y no admite la descarga de SSL.
+
+La presente guía esta enfocada el despliegue de un ambiente demo para un balanceador de carga de aplicaciones. Adicionalmente, se indica el proceso que permite hacer solicitudes HTTP y monitorear el balanceador de carga.
 
 <br />
 
