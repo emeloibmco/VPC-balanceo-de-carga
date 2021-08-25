@@ -39,7 +39,7 @@ Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguient
 | Version de Terraform | terraform_v0.14 |
 <br />
 
-Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo y como opcional puede dar una descripción. Luego, de click en tl botón ```Siguiente/Next```.
+Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo y como opcional puede dar una descripción. Luego, de click en el botón ```Siguiente/Next```.
 
 Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 
