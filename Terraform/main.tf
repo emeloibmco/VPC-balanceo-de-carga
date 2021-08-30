@@ -28,7 +28,7 @@ data "ibm_is_ssh_key" "sshkey" {
 
 resource "ibm_is_vpc" "vpc-dal" {
   provider = ibm.south
-  name          = "lb-vpc-dal"
+  name          = "cce-vpc-dal"
   resource_group = data.ibm_resource_group.group.id
 }
 
@@ -40,7 +40,6 @@ resource "ibm_is_public_gateway" "public_gateway_dal1" {
   name = "nginx-gateway-1"
   vpc  = ibm_is_vpc.vpc-dal.id
   zone = "us-south-1"
-  resource_group = data.ibm_resource_group.group.id
 
   //User can configure timeouts
   timeouts {
@@ -52,7 +51,6 @@ resource "ibm_is_public_gateway" "public_gateway_dal2" {
   name = "nginx-gateway-2"
   vpc  = ibm_is_vpc.vpc-dal.id
   zone = "us-south-2"
-  resource_group = data.ibm_resource_group.group.id
 
   //User can configure timeouts
   timeouts {
@@ -61,9 +59,9 @@ resource "ibm_is_public_gateway" "public_gateway_dal2" {
 }
 
 # Increase count to create subnets in all zones
-resource "ibm_is_subnet" "lb-subnet-dal-1" {
+resource "ibm_is_subnet" "cce-subnet-dal-1" {
   provider = ibm.south
-  name            = "lb-subnet-dal-1"
+  name            = "cce-subnet-dal-1"
   vpc             = ibm_is_vpc.vpc-dal.id
   zone            = "us-south-1"
   total_ipv4_address_count= "256"
@@ -72,9 +70,9 @@ resource "ibm_is_subnet" "lb-subnet-dal-1" {
 }
 
 # Increase count to create subnets in all zones
-resource "ibm_is_subnet" "lb-subnet-dal-2" {
+resource "ibm_is_subnet" "cce-subnet-dal-2" {
   provider = ibm.south
-  name            = "lb-subnet-dal-2"
+  name            = "cce-subnet-dal-2"
   vpc             = ibm_is_vpc.vpc-dal.id
   zone            = "us-south-2"
   total_ipv4_address_count= "256"
@@ -104,14 +102,14 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 # Desploy instances on DALL
 ##############################################################################
 
-resource "ibm_is_instance" "lb-vsi-dal-1" {
+resource "ibm_is_instance" "cce-vsi-dal-1" {
   provider = ibm.south
-  name    = "lb-nginx-1"
+  name    = "cce-nginx-1"
   image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
   profile = "cx2-2x4"
 
   primary_network_interface {
-    subnet = ibm_is_subnet.lb-subnet-dal-1.id
+    subnet = ibm_is_subnet.cce-subnet-dal-1.id
     security_groups = [ibm_is_security_group.security_group.id]
   }
 
@@ -122,14 +120,14 @@ resource "ibm_is_instance" "lb-vsi-dal-1" {
   resource_group = data.ibm_resource_group.group.id
 }
 
-resource "ibm_is_instance" "lb-vsi-dal-2" {
+resource "ibm_is_instance" "cce-vsi-dal-2" {
   provider = ibm.south
-  name    = "lb-nginx-2"
+  name    = "cce-nginx-2"
   image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
   profile = "cx2-2x4"
 
   primary_network_interface {
-    subnet = ibm_is_subnet.lb-subnet-dal-2.id
+    subnet = ibm_is_subnet.cce-subnet-dal-2.id
     security_groups = [ibm_is_security_group.security_group.id]
   }
 
@@ -142,7 +140,7 @@ resource "ibm_is_instance" "lb-vsi-dal-2" {
 
 resource "ibm_is_lb" "lb-nginx" {
   name            = "nginx-lb"
-  subnets         = [ibm_is_subnet.lb-subnet-dal-1.id, ibm_is_subnet.lb-subnet-dal-2.id]
+  subnets         = [ibm_is_subnet.cce-subnet-dal-1.id, ibm_is_subnet.cce-subnet-dal-2.id]
   security_groups = [ibm_is_security_group.security_group.id]
   resource_group  = data.ibm_resource_group.group.id
 }
@@ -163,7 +161,7 @@ resource "ibm_is_lb_pool_member" "lb-server-1" {
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
-  target_address     = ibm_is_instance.lb-vsi-dal-1.primary_network_interface[0].primary_ipv4_address
+  target_address     = ibm_is_instance.cce-vsi-dal-1.primary_network_interface[0].primary_ipv4_address
   weight         = 60
 }
 
@@ -171,7 +169,7 @@ resource "ibm_is_lb_pool_member" "lb-server-2" {
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
-  target_address = ibm_is_instance.lb-vsi-dal-2.primary_network_interface[0].primary_ipv4_address 
+  target_address = ibm_is_instance.cce-vsi-dal-2.primary_network_interface[0].primary_ipv4_address 
   weight         = 60
 }
 
