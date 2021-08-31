@@ -9,7 +9,7 @@ La presente guía esta enfocada el despliegue de un ambiente demo para un balanc
 
 <br />
 
-<p align="center"><img width="700" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/DiagramaFinal.PNG"></p>
+<p align="center"><img width="700" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/DiagramaFinal.png"></p>
 <br />
 
 ## Índice  📰
