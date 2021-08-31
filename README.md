@@ -33,7 +33,7 @@ La presente guía esta enfocada el despliegue de un ambiente demo para un balanc
 Para realizar el ejercicio lo primero que debe hacer es dirigirse al servicio de <a href="https://cloud.ibm.com/schematics/workspaces">IBM Cloud Schematics</a> y dar click en ```Crear espacio de trabajo +/Create workspace +```.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/1_Acceso.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/1_Acceso.gif"></p>
 <br />
 
 Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguiente información:
@@ -52,7 +52,7 @@ Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/2_CrearWS.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/2_CrearWS.gif"></p>
 <br />
 
 ## Configurar las variables de personalización de la plantilla de terraform :key:
@@ -62,7 +62,7 @@ Una vez  creado el espacio de trabajo, podrá ver el campo **VARIABLES**, en don
 * ```resource_group```: ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/3_ConfigurarVariables.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/3_ConfigurarVariables.gif"></p>
 <br />
 
 ## Generar y aplicar el plan de despliegue de los servidores VPC :hammer_and_wrench:
@@ -71,18 +71,18 @@ Ya que estan todos los campos de personalización completos, debe ir hasta la pa
 1. De click en ```Generar plan/Generate plan```: según su configuración, *Terraform* crea un plan de ejecución y describe las acciones que deben ejecutarse para llegar al estado que se describe en sus archivos de configuración de *Terraform*. Para determinar las acciones, *Schematics* analiza los recursos que ya están aprovisionados en su cuenta de *IBM Cloud* para brindarle una vista previa de si los recursos deben agregarse, modificarse o eliminarse. Puede revisar el plan de ejecución, cambiarlo o simplemente ejecutar el plan. Un vez se termina de generar el plan le debe salir como respuesta *Done with the workspace action*, tal y como se muestra en la siguiente imagen.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/4_GenerarPlan.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/4_GenerarPlan.gif"></p>
 <br />
 
 2. De click en ```Aplicar plan/Apply plan```: cuando esté listo para realizar cambios en su entorno de nube, puede aplicar sus archivos de configuración de *Terraform*. Para ejecutar las acciones que se especifican en sus archivos de configuración, *Schematics* utiliza el complemento *IBM Cloud* Provider para *Terraform*. Espere unos minutos mientras se completa el proceso. 
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_1_AplicarPlan.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/5_1_AplicarPlan.gif"></p>
 <br />
 
 Al final debe salir como respuesta *Done with the workspace action*, tal y como se muestra en la siguiente imagen.
 <br /> 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/5_2_AplicarPlan.PNG"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/5_2_AplicarPlan.PNG"></p>
 <br />
 
 ## Acceder al balanceador de carga y realizar solicitud HTTP :computer:
@@ -97,13 +97,13 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 4. En la sección de ```IPs``` copie la primera IP que se muestra.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/6_LoadBalancer.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/6_LoadBalancer.gif"></p>
 <br />
 
 5. Coloque la IP en el navegador. Deberá visualizar como resultado la aplicación que se muestra en la imagen. Para realizar solicitudes de forma automática habilite la opción ```Auto refresh```.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/7_nginx.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/7_nginx.gif"></p>
 <br />
 
 ## Registro y monitoreo de balanceo de carga :chart_with_upwards_trend:
@@ -114,13 +114,13 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
    * De click en el botón ```Agregar monitoreo/Add monitoring``` para agregar un servicio *IBM Cloud Monitoring*. 
      <br />
 
-     <p align="center"><img width="400" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/AddMonitoring.PNG"></p>
+     <p align="center"><img width="400" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/AddMonitoring.PNG"></p>
      <br />
    
    * En la nueva ventana que aparece para la creación del servicio indique: la región donde está trabajando, el plan de precios (puede ser Lite), asigne un nombre exclusivo para        el servicio, seleccione el grupo de recursos, habilite la plataforma de métricas y para finalizar de click en el botón ```Crear/Create```.
      <br />
      
-     <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/AddMonitoring2.gif"></p>
+     <p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/AddMonitoring2.gif"></p>
      <br />
 
 2. Si ya tiene agregado el servicio de monitoreo en el balanceador de carga:
@@ -131,7 +131,7 @@ Para monitorear y registrar de forma gráfica las solicitudes que se hacen al ba
 3. Espere mientras carga la ventana de monitoreo. Luego, podrá visualizar las métricas.
 <br />
 
-<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga/blob/main/images/8_Monitoreo.gif"></p>
+<p align="center"><img width="900" src="https://github.com/emeloibmco/VPC-balanceo-de-carga-IMG/blob/master/Images/8_Monitoreo.gif"></p>
 <br />
 
 ## Referencias :mag:
