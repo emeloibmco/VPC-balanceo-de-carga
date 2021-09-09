@@ -37,6 +37,7 @@ resource "ibm_is_vpc" "vpc-pr" {
 ##############################################################################
 
 resource "ibm_is_public_gateway" "public_gateway_pr" {
+  provider      = ibm.primary
   name = "nginx-gateway-1"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-1"
@@ -48,6 +49,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
 }
 
 resource "ibm_is_public_gateway" "public_gateway_pr2" {
+  provider      = ibm.primary
   name = "nginx-gateway-2"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-2"
@@ -87,18 +89,21 @@ resource "ibm_is_subnet" "cce-subnet-pr-2" {
 }
 
 resource "ibm_is_security_group" "security_group" {
+  provider      = ibm.primary
   name           = "ngnx-lb-sg"
   vpc            = ibm_is_vpc.vpc-pr.id
   resource_group = data.ibm_resource_group.group.id
 }
 
 resource "ibm_is_security_group_rule" "security_group_rule_in" {
+  provider      = ibm.primary
   group     = ibm_is_security_group.security_group.id
   direction = "inbound"
   remote    = "0.0.0.0/0"
 }
 
 resource "ibm_is_security_group_rule" "security_group_rule_out" {
+  provider      = ibm.primary
   group     = ibm_is_security_group.security_group.id
   direction = "outbound"
   remote    = "0.0.0.0/0"
@@ -145,6 +150,7 @@ resource "ibm_is_instance" "cce-vsi-pr-2" {
 }
 
 resource "ibm_is_lb" "lb-nginx" {
+  provider      = ibm.primary
   name            = "nginx-lb"
   subnets         = [ibm_is_subnet.cce-subnet-pr-1.id, ibm_is_subnet.cce-subnet-pr-2.id]
   security_groups = [ibm_is_security_group.security_group.id]
@@ -152,6 +158,7 @@ resource "ibm_is_lb" "lb-nginx" {
 }
 
 resource "ibm_is_lb_pool" "lb-nginx-pool" {
+  provider      = ibm.primary
   lb                 = ibm_is_lb.lb-nginx.id
   name               = "nginx-lb-pool"
   protocol           = "http"
@@ -164,6 +171,7 @@ resource "ibm_is_lb_pool" "lb-nginx-pool" {
 }
 
 resource "ibm_is_lb_pool_member" "lb-server-1" {
+  provider      = ibm.primary
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
@@ -172,6 +180,7 @@ resource "ibm_is_lb_pool_member" "lb-server-1" {
 }
 
 resource "ibm_is_lb_pool_member" "lb-server-2" {
+  provider      = ibm.primary
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
@@ -180,6 +189,7 @@ resource "ibm_is_lb_pool_member" "lb-server-2" {
 }
 
 resource "ibm_is_lb_listener" "lb-listener" {
+  provider      = ibm.primary
   lb                   = ibm_is_lb.lb-nginx.id
   port                 = "80"
   protocol             = "http"
