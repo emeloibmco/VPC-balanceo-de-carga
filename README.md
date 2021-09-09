@@ -46,7 +46,7 @@ Posteriormente, aparecerá una ventana en la que deberá diligenciar la siguient
 | Versión de Terraform | terraform_v0.14 |
 <br />
 
-Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo y como opcional puede dar una descripción. Luego, de click en el botón ```Siguiente/Next```.
+Presione ```Siguiente/Next```  ➡ Agregue un nombre para el espacio de trabajo ➡ Seleccione el grupo de recursos al que tiene acceso ➡ Seleccione una ubicación para el espacio de trabajo (recuerde que la ubicación determina dónde se ejecutarán las acciones del espacio de trabajo y no donde se desplegarán los recursos) y como opcional puede dar una descripción. Luego, de click en el botón ```Siguiente/Next```.
 
 Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 
@@ -58,7 +58,7 @@ Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 ## Configurar las variables de personalización de la plantilla de terraform :key:
 Una vez  creado el espacio de trabajo, podrá ver el campo **VARIABLES**, en donde puede personalizar el espacio de trabajo. Allí debe ingresar la siguiente información:
 
-* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. 
+* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. Recuerde que esta *SSH* key debe estar desplegada en la region p-osa Osaka.   
 * ```resource_group```: ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
 <br />
 
