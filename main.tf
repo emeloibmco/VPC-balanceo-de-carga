@@ -18,6 +18,7 @@ data "ibm_resource_group" "group" {
 }
 
 data "ibm_is_ssh_key" "sshkey" {
+  provider = ibm.primary
   name = var.ssh_keyname
 }
 
