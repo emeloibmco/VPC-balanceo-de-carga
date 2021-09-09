@@ -29,7 +29,7 @@ data "ibm_is_ssh_key" "sshkey" {
 
 resource "ibm_is_vpc" "vpc-pr" {
   provider      = ibm.primary
-  name          = "vpc-cce-primary"
+  name          = "vpc-lb-demo-primary"
   resource_group = data.ibm_resource_group.group.id
 }
 
@@ -39,7 +39,7 @@ resource "ibm_is_vpc" "vpc-pr" {
 
 resource "ibm_is_public_gateway" "public_gateway_pr" {
   provider      = ibm.primary
-  name = "nginx-gateway-1"
+  name = "lb-demo-gateway-1"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-1"
 
@@ -51,7 +51,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
 
 resource "ibm_is_public_gateway" "public_gateway_pr2" {
   provider      = ibm.primary
-  name = "nginx-gateway-2"
+  name = "lb-demo-gateway-2"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-2"
 
@@ -67,7 +67,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr2" {
 
 resource "ibm_is_subnet" "cce-subnet-pr-1" {
   provider = ibm.primary
-  name            = "cce-subnet-pr-1"
+  name            = "lb-demo-subnet-pr-1"
   vpc             = ibm_is_vpc.vpc-pr.id
   zone            = "${var.region-primary}-1"
   total_ipv4_address_count= "256"
@@ -81,7 +81,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-1" {
 
 resource "ibm_is_subnet" "cce-subnet-pr-2" {
   provider = ibm.primary
-  name            = "cce-subnet-pr-2"
+  name            = "lb-demo-subnet-pr-2"
   vpc             = ibm_is_vpc.vpc-pr.id
   zone            = "${var.region-primary}-2"
   total_ipv4_address_count= "256"
@@ -91,7 +91,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-2" {
 
 resource "ibm_is_security_group" "security_group" {
   provider      = ibm.primary
-  name           = "ngnx-lb-sg"
+  name           = "lb-demo-sg"
   vpc            = ibm_is_vpc.vpc-pr.id
   resource_group = data.ibm_resource_group.group.id
 }
@@ -116,7 +116,7 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 
 resource "ibm_is_instance" "cce-vsi-pr-1" {
   provider = ibm.primary
-  name    = "cce-nginx-1"
+  name    = "lb-demo-1"
   image   = "r034-00e8ee44-43c9-4561-9599-71c1979dde8f"
   profile = "cx2-2x4"
 
@@ -134,7 +134,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
 
 resource "ibm_is_instance" "cce-vsi-pr-2" {
   provider = ibm.primary
-  name    = "cce-nginx-2"
+  name    = "lb-demo-2"
   image   = "r034-00e8ee44-43c9-4561-9599-71c1979dde8f"
   profile = "cx2-2x4"
 
@@ -152,7 +152,7 @@ resource "ibm_is_instance" "cce-vsi-pr-2" {
 
 resource "ibm_is_lb" "lb-nginx" {
   provider      = ibm.primary
-  name            = "nginx-lb"
+  name            = "lb-demo"
   subnets         = [ibm_is_subnet.cce-subnet-pr-1.id, ibm_is_subnet.cce-subnet-pr-2.id]
   security_groups = [ibm_is_security_group.security_group.id]
   resource_group  = data.ibm_resource_group.group.id
