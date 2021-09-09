@@ -116,7 +116,7 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 resource "ibm_is_instance" "cce-vsi-pr-1" {
   provider = ibm.primary
   name    = "cce-nginx-1"
-  image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
+  image   = "r034-00e8ee44-43c9-4561-9599-71c1979dde8f"
   profile = "cx2-2x4"
 
   primary_network_interface {
@@ -134,7 +134,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
 resource "ibm_is_instance" "cce-vsi-pr-2" {
   provider = ibm.primary
   name    = "cce-nginx-2"
-  image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
+  image   = "r034-00e8ee44-43c9-4561-9599-71c1979dde8f"
   profile = "cx2-2x4"
 
   primary_network_interface {
