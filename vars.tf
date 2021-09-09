@@ -1,3 +1,8 @@
+variable "region-primary" {
+  default = "jp-osa"
+  description = "au-syd, in-che, jp-osa, jp-tok, kr-seo, eu-de, eu-gb, ca-tor, us-south, us-east, br-sao"
+}
+
 variable "ssh_keyname" {
   description = "ssh key name"
 }

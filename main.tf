@@ -8,12 +8,12 @@ terraform {
 }
 
 provider "ibm" {
-  alias  = "south"
-  region = "us-south"
+  alias  = "primary"
+  region = var.region-primary
 }
 
 data "ibm_resource_group" "group" {
-  provider = ibm.south
+  provider = ibm.primary
   name = var.resource_group
 }
 
@@ -23,23 +23,23 @@ data "ibm_is_ssh_key" "sshkey" {
 
 
 ##############################################################################
-# Create a VPC DALLAS
+# Create a VPC primary datacenter
 ##############################################################################
 
-resource "ibm_is_vpc" "vpc-dal" {
-  provider = ibm.south
-  name          = "cce-vpc-dal"
+resource "ibm_is_vpc" "vpc-pr" {
+  provider      = ibm.primary
+  name          = "vpc-cce-primary"
   resource_group = data.ibm_resource_group.group.id
 }
 
 ##############################################################################
-# Create Subnet zone DALL
+# Create Subnet zone primary datacenter
 ##############################################################################
 
-resource "ibm_is_public_gateway" "public_gateway_dal1" {
+resource "ibm_is_public_gateway" "public_gateway_pr" {
   name = "nginx-gateway-1"
-  vpc  = ibm_is_vpc.vpc-dal.id
-  zone = "us-south-1"
+  vpc  = ibm_is_vpc.vpc-pr.id
+  zone = "${var.region-primary}-1"
 
   //User can configure timeouts
   timeouts {
@@ -47,10 +47,10 @@ resource "ibm_is_public_gateway" "public_gateway_dal1" {
   }
 }
 
-resource "ibm_is_public_gateway" "public_gateway_dal2" {
+resource "ibm_is_public_gateway" "public_gateway_pr2" {
   name = "nginx-gateway-2"
-  vpc  = ibm_is_vpc.vpc-dal.id
-  zone = "us-south-2"
+  vpc  = ibm_is_vpc.vpc-pr.id
+  zone = "${var.region-primary}-2"
 
   //User can configure timeouts
   timeouts {
@@ -58,31 +58,37 @@ resource "ibm_is_public_gateway" "public_gateway_dal2" {
   }
 }
 
-# Increase count to create subnets in all zones
-resource "ibm_is_subnet" "cce-subnet-dal-1" {
-  provider = ibm.south
-  name            = "cce-subnet-dal-1"
-  vpc             = ibm_is_vpc.vpc-dal.id
-  zone            = "us-south-1"
+##############################################################################
+# Create subnet 1 on primary datacenter
+##############################################################################
+
+resource "ibm_is_subnet" "cce-subnet-pr-1" {
+  provider = ibm.primary
+  name            = "cce-subnet-pr-1"
+  vpc             = ibm_is_vpc.vpc-pr.id
+  zone            = "${var.region-primary}-1"
   total_ipv4_address_count= "256"
-  public_gateway  = ibm_is_public_gateway.public_gateway_dal1.id
+  public_gateway  = ibm_is_public_gateway.public_gateway_pr.id
   resource_group  = data.ibm_resource_group.group.id
 }
 
-# Increase count to create subnets in all zones
-resource "ibm_is_subnet" "cce-subnet-dal-2" {
-  provider = ibm.south
-  name            = "cce-subnet-dal-2"
-  vpc             = ibm_is_vpc.vpc-dal.id
-  zone            = "us-south-2"
+##############################################################################
+# Create subnet 2 on primary datacenter
+##############################################################################
+
+resource "ibm_is_subnet" "cce-subnet-pr-2" {
+  provider = ibm.primary
+  name            = "cce-subnet-pr-2"
+  vpc             = ibm_is_vpc.vpc-pr.id
+  zone            = "${var.region-primary}-2"
   total_ipv4_address_count= "256"
-  public_gateway  = ibm_is_public_gateway.public_gateway_dal2.id
+  public_gateway  = ibm_is_public_gateway.public_gateway_pr2.id
   resource_group  = data.ibm_resource_group.group.id
 }
 
 resource "ibm_is_security_group" "security_group" {
   name           = "ngnx-lb-sg"
-  vpc            = ibm_is_vpc.vpc-dal.id
+  vpc            = ibm_is_vpc.vpc-pr.id
   resource_group = data.ibm_resource_group.group.id
 }
 
@@ -99,40 +105,40 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 }
 
 ##############################################################################
-# Desploy instances on DALL
+# Desploy instances on primary datacenter
 ##############################################################################
 
-resource "ibm_is_instance" "cce-vsi-dal-1" {
-  provider = ibm.south
+resource "ibm_is_instance" "cce-vsi-pr-1" {
+  provider = ibm.primary
   name    = "cce-nginx-1"
   image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
   profile = "cx2-2x4"
 
   primary_network_interface {
-    subnet = ibm_is_subnet.cce-subnet-dal-1.id
+    subnet = ibm_is_subnet.cce-subnet-pr-1.id
     security_groups = [ibm_is_security_group.security_group.id]
   }
 
-  vpc       = ibm_is_vpc.vpc-dal.id
-  zone      = "us-south-1"
+  vpc       = ibm_is_vpc.vpc-pr.id
+  zone      = "${var.region-primary}-1"
   keys      = [data.ibm_is_ssh_key.sshkey.id]
   user_data = file("./script.sh")
   resource_group = data.ibm_resource_group.group.id
 }
 
-resource "ibm_is_instance" "cce-vsi-dal-2" {
-  provider = ibm.south
+resource "ibm_is_instance" "cce-vsi-pr-2" {
+  provider = ibm.primary
   name    = "cce-nginx-2"
   image   = "r006-988caa8b-7786-49c9-aea6-9553af2b1969"
   profile = "cx2-2x4"
 
   primary_network_interface {
-    subnet = ibm_is_subnet.cce-subnet-dal-2.id
+    subnet = ibm_is_subnet.cce-subnet-pr-2.id
     security_groups = [ibm_is_security_group.security_group.id]
   }
 
-  vpc       = ibm_is_vpc.vpc-dal.id
-  zone      = "us-south-2"
+  vpc       = ibm_is_vpc.vpc-pr.id
+  zone      = "${var.region-primary}-2"
   keys      = [data.ibm_is_ssh_key.sshkey.id]
   user_data = file("./script.sh")
   resource_group = data.ibm_resource_group.group.id
@@ -140,7 +146,7 @@ resource "ibm_is_instance" "cce-vsi-dal-2" {
 
 resource "ibm_is_lb" "lb-nginx" {
   name            = "nginx-lb"
-  subnets         = [ibm_is_subnet.cce-subnet-dal-1.id, ibm_is_subnet.cce-subnet-dal-2.id]
+  subnets         = [ibm_is_subnet.cce-subnet-pr-1.id, ibm_is_subnet.cce-subnet-pr-2.id]
   security_groups = [ibm_is_security_group.security_group.id]
   resource_group  = data.ibm_resource_group.group.id
 }
@@ -161,7 +167,7 @@ resource "ibm_is_lb_pool_member" "lb-server-1" {
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
-  target_address     = ibm_is_instance.cce-vsi-dal-1.primary_network_interface[0].primary_ipv4_address
+  target_address     = ibm_is_instance.cce-vsi-pr-1.primary_network_interface[0].primary_ipv4_address
   weight         = 60
 }
 
@@ -169,7 +175,7 @@ resource "ibm_is_lb_pool_member" "lb-server-2" {
   lb             = ibm_is_lb.lb-nginx.id
   pool           = ibm_is_lb_pool.lb-nginx-pool.id
   port           = 80
-  target_address = ibm_is_instance.cce-vsi-dal-2.primary_network_interface[0].primary_ipv4_address 
+  target_address = ibm_is_instance.cce-vsi-pr-2.primary_network_interface[0].primary_ipv4_address 
   weight         = 60
 }
 
