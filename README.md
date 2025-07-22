@@ -110,6 +110,11 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 Para monitorear y registrar de forma gráfica las solicitudes que se hacen al balanceador de carga, realice lo siguiente:
 
 Nota:
+  Permisos asignados.
+
+  <img width="962" height="408" alt="image" src="https://github.com/user-attachments/assets/a40747d7-de93-4174-aa45-9a25de9519e1" />
+
+  
   Se requiere la siguiente authorization entre ibmcloud monitoring y ibmcloud metrics routing
 
   <img width="813" height="733" alt="image" src="https://github.com/user-attachments/assets/13b22548-4ac0-4e9b-b48d-1ecf71abd715" />
