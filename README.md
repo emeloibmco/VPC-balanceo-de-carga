@@ -109,6 +109,12 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 ## Registro y monitoreo de balanceo de carga :chart_with_upwards_trend:
 Para monitorear y registrar de forma gráfica las solicitudes que se hacen al balanceador de carga, realice lo siguiente:
 
+Nota:
+  Se requiere la siguiente authorization entre ibmcloud monitoring y imbcloud metrics routing
+
+  <img width="813" height="733" alt="image" src="https://github.com/user-attachments/assets/13b22548-4ac0-4e9b-b48d-1ecf71abd715" />
+
+
 1. Si no tiene agregado un servicio de monitoreo en el balanceador de carga:
    * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
    * De click en el botón ```Agregar monitoreo/Add monitoring``` para agregar un servicio *IBM Cloud Monitoring*. 
