@@ -43,8 +43,6 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-1"
   resource_group = data.ibm_resource_group.group.id
-
-  //User can configure timeouts
   timeouts {
     create = "90m"
   }
@@ -56,7 +54,6 @@ resource "ibm_is_public_gateway" "public_gateway_pr2" {
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-2"
   resource_group = data.ibm_resource_group.group.id
-  //User can configure timeouts
   timeouts {
     create = "90m"
   }
