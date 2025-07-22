@@ -58,7 +58,7 @@ Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 ## Configurar las variables de personalización de la plantilla de terraform :key:
 Una vez  creado el espacio de trabajo, podrá ver el campo **VARIABLES**, en donde puede personalizar el espacio de trabajo. Allí debe ingresar la siguiente información:
 
-* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. Recuerde que esta *SSH* key debe estar desplegada en la region p-osa Osaka.   
+* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. Recuerde que esta *SSH* key debe estar desplegada en la region Dallas.   
 * ```resource_group```: ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
 <br />
 
