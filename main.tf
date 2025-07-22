@@ -42,8 +42,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
   name = "lb-demo-gateway-1"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-1"
-
-  //User can configure timeouts
+  resource_group = data.ibm_resource_group.group.id
   timeouts {
     create = "90m"
   }
@@ -54,8 +53,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr2" {
   name = "lb-demo-gateway-2"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region-primary}-2"
-
-  //User can configure timeouts
+  resource_group = data.ibm_resource_group.group.id
   timeouts {
     create = "90m"
   }
@@ -117,7 +115,7 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 resource "ibm_is_instance" "cce-vsi-pr-1" {
   provider = ibm.primary
   name    = "lb-demo-1"
-  image   = "r034-31099738-7402-4921-959b-8809ec780317"
+  image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
   primary_network_interface {
@@ -135,7 +133,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
 resource "ibm_is_instance" "cce-vsi-pr-2" {
   provider = ibm.primary
   name    = "lb-demo-2"
-  image   = "r034-31099738-7402-4921-959b-8809ec780317"
+  image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
   primary_network_interface {
