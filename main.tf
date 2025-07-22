@@ -168,7 +168,7 @@ resource "ibm_is_lb_pool" "lb-nginx-pool" {
   health_type        = "http"
   health_monitor_url = "/"
 }
-ib
+
 resource "ibm_is_lb_pool_member" "lb-server-1" {
   provider      = ibm.primary
   lb             = ibm_is_lb.lb-nginx.id
