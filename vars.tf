@@ -10,3 +10,7 @@ variable "ssh_keyname" {
 variable "resource_group" {
   description = "resource group name"
 }
+
+variable "vpc_name" {
+  description = "Unique name to your VPC"
+}
