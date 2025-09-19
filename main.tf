@@ -29,7 +29,7 @@ data "ibm_is_ssh_key" "sshkey" {
 
 resource "ibm_is_vpc" "vpc-pr" {
   provider      = ibm.primary
-  name          = "vpc-lb-demo-primary"
+  name          = var.vpc_name
   resource_group = data.ibm_resource_group.group.id
 }
 
