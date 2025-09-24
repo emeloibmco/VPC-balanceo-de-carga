@@ -124,7 +124,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
   }
 
   vpc       = ibm_is_vpc.vpc-pr.id
-  zone      = "${var.region-primary}-1
+  zone      = "${var.region-primary}-1"
   keys      = [data.ibm_is_ssh_key.sshkey.id]
   user_data = file("./script.sh")
   resource_group = data.ibm_resource_group.group.id
