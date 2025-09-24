@@ -1,4 +1,4 @@
-variable "region-primary" {
+variable "region_primary" {
   default = "us-south"
   description = "au-syd, in-che, jp-osa, jp-tok, kr-seo, eu-de, eu-gb, ca-tor, us-south, us-east, br-sao"
 }
