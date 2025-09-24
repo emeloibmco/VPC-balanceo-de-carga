@@ -10,5 +10,3 @@ variable "ssh_keyname" {
 variable "resource_group" {
   description = "resource group name"
 }
-
-

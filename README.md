@@ -58,7 +58,7 @@ Una vez completos todos los campos puede presionar la opcion ```Crear/Create```.
 ## Configurar las variables de personalización de la plantilla de terraform :key:
 Una vez  creado el espacio de trabajo, podrá ver el campo **VARIABLES**, en donde puede personalizar el espacio de trabajo. Allí debe ingresar la siguiente información:
 
-* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. Recuerde que esta *SSH* key debe estar desplegada en la region p-osa Osaka.   
+* ```ssh_keyname```: coloque el nombre del *SSH* key que tendran las instancias de computo en el template. Habilite el campo ```sensitive``` para indicar que se trata de un valor sensible. Recuerde que esta *SSH* key debe estar desplegada en la region Dallas.   
 * ```resource_group```: ingrese el nombre del grupo de recursos en el cual tiene permisos y donde quedaran agrupados todos los recursos que se aprovisionaran.
 <br />
 
@@ -108,6 +108,17 @@ Para acceder al balanceador de carga implementado en el proceso anterior, realic
 
 ## Registro y monitoreo de balanceo de carga :chart_with_upwards_trend:
 Para monitorear y registrar de forma gráfica las solicitudes que se hacen al balanceador de carga, realice lo siguiente:
+
+Nota:
+  Permisos asignados.
+
+  <img width="962" height="408" alt="image" src="https://github.com/user-attachments/assets/a40747d7-de93-4174-aa45-9a25de9519e1" />
+
+  
+  Se requiere la siguiente authorization entre ibmcloud monitoring y ibmcloud metrics routing
+
+  <img width="813" height="733" alt="image" src="https://github.com/user-attachments/assets/13b22548-4ac0-4e9b-b48d-1ecf71abd715" />
+
 
 1. Si no tiene agregado un servicio de monitoreo en el balanceador de carga:
    * Diríjase a la sección ```Vista previsa de supervisión/Monitoring preview```.
