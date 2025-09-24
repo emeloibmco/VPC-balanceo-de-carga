@@ -9,7 +9,7 @@ terraform {
 
 provider "ibm" {
   alias  = "primary"
-  region = var.region-primary
+  region = var.region_primary
 }
 
 data "ibm_resource_group" "group" {
