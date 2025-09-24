@@ -114,7 +114,7 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 
 resource "ibm_is_instance" "cce-vsi-pr-1" {
   provider = ibm.primary
-  name    = "lb-demo-1"
+  name    = var.lb-demo-1
   image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
@@ -132,7 +132,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
 
 resource "ibm_is_instance" "cce-vsi-pr-2" {
   provider = ibm.primary
-  name    = "lb-demo-2"
+  name    = var.lb-demo-2
   image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
