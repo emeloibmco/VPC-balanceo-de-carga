@@ -41,7 +41,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
   provider      = ibm.primary
   name = "lb-demo-gateway-1-${var.resource_group}"
   vpc  = ibm_is_vpc.vpc-pr.id
-  zone = "${var.region-primary}-1"
+  zone = "${var.region_primary}-1"
   resource_group = data.ibm_resource_group.group.id
   timeouts {
     create = "90m"
@@ -52,7 +52,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr2" {
   provider      = ibm.primary
   name = "lb-demo-gateway-2-${var.resource_group}"
   vpc  = ibm_is_vpc.vpc-pr.id
-  zone = "${var.region-primary}-2"
+  zone = "${var.region_primary}-2"
   resource_group = data.ibm_resource_group.group.id
   timeouts {
     create = "90m"
@@ -67,7 +67,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-1" {
   provider = ibm.primary
   name            = "lb-demo-subnet-pr-1-${var.resource_group}"
   vpc             = ibm_is_vpc.vpc-pr.id
-  zone            = "${var.region-primary}-1"
+  zone            = "${var.region_primary}-1"
   total_ipv4_address_count= "256"
   public_gateway  = ibm_is_public_gateway.public_gateway_pr.id
   resource_group  = data.ibm_resource_group.group.id
@@ -81,7 +81,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-2" {
   provider = ibm.primary
   name            = "lb-demo-subnet-pr-2-${var.resource_group}"
   vpc             = ibm_is_vpc.vpc-pr.id
-  zone            = "${var.region-primary}-2"
+  zone            = "${var.region_primary}-2"
   total_ipv4_address_count= "256"
   public_gateway  = ibm_is_public_gateway.public_gateway_pr2.id
   resource_group  = data.ibm_resource_group.group.id
@@ -124,7 +124,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
   }
 
   vpc       = ibm_is_vpc.vpc-pr.id
-  zone      = "${var.region-primary}-1"
+  zone      = "${var.region_primary}-1"
   keys      = [data.ibm_is_ssh_key.sshkey.id]
   user_data = file("./script.sh")
   resource_group = data.ibm_resource_group.group.id
@@ -142,7 +142,7 @@ resource "ibm_is_instance" "cce-vsi-pr-2" {
   }
 
   vpc       = ibm_is_vpc.vpc-pr.id
-  zone      = "${var.region-primary}-2"
+  zone      = "${var.region_primary}-2"
   keys      = [data.ibm_is_ssh_key.sshkey.id]
   user_data = file("./script.sh")
   resource_group = data.ibm_resource_group.group.id
