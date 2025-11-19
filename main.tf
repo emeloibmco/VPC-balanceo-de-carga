@@ -39,7 +39,7 @@ resource "ibm_is_vpc" "vpc-pr" {
 
 resource "ibm_is_public_gateway" "public_gateway_pr" {
   provider      = ibm.primary
-  name = "lb-demo-gateway-1-${var.resource_group}"
+  name = replace("lb-demo-gateway-1-${var.resource_group}",'_','-')
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region_primary}-1"
   resource_group = data.ibm_resource_group.group.id
