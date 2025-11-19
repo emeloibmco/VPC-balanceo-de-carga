@@ -22,6 +22,9 @@ data "ibm_is_ssh_key" "sshkey" {
   name = var.ssh_keyname
 }
 
+locals {
+  rg = replace("${var.resource_group}", "_", "-")
+}
 
 ##############################################################################
 # Create a VPC primary datacenter
@@ -29,7 +32,7 @@ data "ibm_is_ssh_key" "sshkey" {
 
 resource "ibm_is_vpc" "vpc-pr" {
   provider      = ibm.primary
-  name          = "vpc-lb-demo-primary-${var.resource_group}"
+  name          = "vpc-lb-demo-primary-${local.rg}"
   resource_group = data.ibm_resource_group.group.id
 }
 
@@ -39,7 +42,7 @@ resource "ibm_is_vpc" "vpc-pr" {
 
 resource "ibm_is_public_gateway" "public_gateway_pr" {
   provider      = ibm.primary
-  name = replace("lb-demo-gateway-1-${var.resource_group}","_","-")
+  name = "lb-demo-gateway-1-${local.rg}"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region_primary}-1"
   resource_group = data.ibm_resource_group.group.id
@@ -50,7 +53,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr" {
 
 resource "ibm_is_public_gateway" "public_gateway_pr2" {
   provider      = ibm.primary
-  name = "lb-demo-gateway-2-${var.resource_group}"
+  name = "lb-demo-gateway-2-${local.rg}"
   vpc  = ibm_is_vpc.vpc-pr.id
   zone = "${var.region_primary}-2"
   resource_group = data.ibm_resource_group.group.id
@@ -65,7 +68,7 @@ resource "ibm_is_public_gateway" "public_gateway_pr2" {
 
 resource "ibm_is_subnet" "cce-subnet-pr-1" {
   provider = ibm.primary
-  name            = "lb-demo-subnet-pr-1-${var.resource_group}"
+  name            = "lb-demo-subnet-pr-1-${local.rg}"
   vpc             = ibm_is_vpc.vpc-pr.id
   zone            = "${var.region_primary}-1"
   total_ipv4_address_count= "256"
@@ -79,7 +82,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-1" {
 
 resource "ibm_is_subnet" "cce-subnet-pr-2" {
   provider = ibm.primary
-  name            = "lb-demo-subnet-pr-2-${var.resource_group}"
+  name            = "lb-demo-subnet-pr-2-${local.rg}"
   vpc             = ibm_is_vpc.vpc-pr.id
   zone            = "${var.region_primary}-2"
   total_ipv4_address_count= "256"
@@ -89,7 +92,7 @@ resource "ibm_is_subnet" "cce-subnet-pr-2" {
 
 resource "ibm_is_security_group" "security_group" {
   provider      = ibm.primary
-  name           = "lb-demo-sg-${var.resource_group}"
+  name           = "lb-demo-sg-${local.rg}"
   vpc            = ibm_is_vpc.vpc-pr.id
   resource_group = data.ibm_resource_group.group.id
 }
@@ -114,7 +117,7 @@ resource "ibm_is_security_group_rule" "security_group_rule_out" {
 
 resource "ibm_is_instance" "cce-vsi-pr-1" {
   provider = ibm.primary
-  name    = "lb-demo-1-${var.resource_group}"
+  name    = "lb-demo-1-${local.rg}"
   image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
@@ -132,7 +135,7 @@ resource "ibm_is_instance" "cce-vsi-pr-1" {
 
 resource "ibm_is_instance" "cce-vsi-pr-2" {
   provider = ibm.primary
-  name    = "lb-demo-2-${var.resource_group}"
+  name    = "lb-demo-2-${local.rg}"
   image   = "r006-5697e196-1f34-4bd0-8c1a-d316723ab37d"
   profile = "cx2-2x4"
 
@@ -150,7 +153,7 @@ resource "ibm_is_instance" "cce-vsi-pr-2" {
 
 resource "ibm_is_lb" "lb-nginx" {
   provider      = ibm.primary
-  name            = "lb-demo-${var.resource_group}"
+  name            = "lb-demo-${local.rg}"
   subnets         = [ibm_is_subnet.cce-subnet-pr-1.id, ibm_is_subnet.cce-subnet-pr-2.id]
   security_groups = [ibm_is_security_group.security_group.id]
   resource_group  = data.ibm_resource_group.group.id
@@ -159,7 +162,7 @@ resource "ibm_is_lb" "lb-nginx" {
 resource "ibm_is_lb_pool" "lb-nginx-pool" {
   provider      = ibm.primary
   lb                 = ibm_is_lb.lb-nginx.id
-  name               = "nginx-lb-pool-${var.resource_group}"
+  name               = "nginx-lb-pool-${local.rg}"
   protocol           = "http"
   algorithm          = "round_robin"
   health_delay       = "15"
